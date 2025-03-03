@@ -1,0 +1,31 @@
+spring:
+  application:
+    name: weather-app-api
+
+  # Data source configuration
+  datasource:
+    url: jdbc:h2:file:~/weatherappH2
+    username: sa
+    password: password
+    driverClassName: org.h2.Driver
+
+  # JPA configuration
+  jpa:
+    database-platform: org.hibernate.dialect.H2Dialect
+    hibernate:
+      ddl-auto: update
+
+  # Required to access the H2 console
+  h2:
+    console:
+      path: /h2-console
+      enabled: true
+
+  # Turn off the Spring Boot banner
+  main:
+    banner-mode: off
+
+weather:
+  api:
+    base-url: https://wttr.in
+    url-params: /%s?format=j1
