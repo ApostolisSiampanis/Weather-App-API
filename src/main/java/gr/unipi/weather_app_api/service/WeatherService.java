@@ -1,10 +1,10 @@
-package gr.unipi.weather_app_api.services;
+package gr.unipi.weather_app_api.service;
 
-import gr.unipi.weather_app_api.models.WeatherData;
+import gr.unipi.weather_app_api.model.WeatherData;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import org.springframework.web.reactive.function.client.WebClient;
-import gr.unipi.weather_app_api.repositories.WeatherRepository;
+import gr.unipi.weather_app_api.repository.WeatherRepository;
 
 import java.time.LocalDateTime;
 import java.util.List;
@@ -38,14 +38,14 @@ public class WeatherService {
                 throw new RuntimeException("No response from weather API");
             }
 
-            Map<String, Object> currentCondition = ((List<Map<String, Object>>) response.get("current_condition")).get(0);
+            Map<String, Object> currentCondition = ((List<Map<String, Object>>) response.get("current_condition")).getFirst();
             WeatherData data = new WeatherData();
             data.setCity(city);
             data.setTemperature(Integer.parseInt((String) currentCondition.get("temp_C")));
             data.setHumidity(Integer.parseInt((String) currentCondition.get("humidity")));
             data.setWindSpeed(Integer.parseInt((String) currentCondition.get("windspeedKmph")));
             data.setUvIndex(Integer.parseInt((String) currentCondition.get("uvIndex")));
-            data.setWeather_description(((List<Map<String, Object>>) currentCondition.get("weatherDesc")).get(0).get("value").toString());
+            data.setWeather_description(((List<Map<String, Object>>) currentCondition.get("weatherDesc")).getFirst().get("value").toString());
             data.setTimestamp(LocalDateTime.now());
 
             return repository.save(data);

@@ -1,4 +1,4 @@
-package gr.unipi.weather_app_api;
+package gr.unipi.weather_app_api.configuration;
 
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;

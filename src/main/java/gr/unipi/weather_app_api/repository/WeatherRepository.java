@@ -1,6 +1,6 @@
-package gr.unipi.weather_app_api.repositories;
+package gr.unipi.weather_app_api.repository;
 
-import gr.unipi.weather_app_api.models.WeatherData;
+import gr.unipi.weather_app_api.model.WeatherData;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

@@ -1,13 +1,13 @@
-package gr.unipi.weather_app_api.controllers;
+package gr.unipi.weather_app_api.controller;
 
 import lombok.RequiredArgsConstructor;
-import gr.unipi.weather_app_api.models.WeatherData;
+import gr.unipi.weather_app_api.model.WeatherData;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-import gr.unipi.weather_app_api.services.WeatherService;
+import gr.unipi.weather_app_api.service.WeatherService;
 
 @RestController
 @RequestMapping("/api/v1/weather")

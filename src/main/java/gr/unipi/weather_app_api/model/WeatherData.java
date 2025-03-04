@@ -1,4 +1,4 @@
-package gr.unipi.weather_app_api.models;
+package gr.unipi.weather_app_api.model;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
