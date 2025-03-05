@@ -1,4 +1,4 @@
-package gr.unipi.weather_app_api.model;
+package gr.unipi.weather_app.model;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -7,6 +7,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 
 @Entity
 @Table(name = "weather_data", schema = "public")
@@ -41,4 +42,19 @@ public class WeatherData {
 
     @Column(name = "timestamp", nullable = false)
     private LocalDateTime timestamp;
+
+    @Override
+    public String toString() {
+
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("HH:mm dd-MM-yyyy");
+        String formatedTimestamp = timestamp.format(formatter);
+
+        return "\uD83C\uDF0D Weather Report for " + city + '\n' +
+                "\uD83C\uDF21\uFE0F Temperature: " + temperature + "°C\n" +
+                "💧 Humidity: " + humidity + "%\n" +
+                "💨 Wind Speed: " + windSpeed + " km/h\n" +
+                "☀️ UV Index: " + uvIndex + "\n" +
+                "📜 Weather Description: " + weather_description + "\n" +
+                "⏳ Timestamp: " + formatedTimestamp + "\n";
+    }
 }
