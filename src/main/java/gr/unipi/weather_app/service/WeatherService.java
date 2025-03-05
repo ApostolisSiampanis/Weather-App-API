@@ -1,10 +1,10 @@
-package gr.unipi.weather_app_api.service;
+package gr.unipi.weather_app.service;
 
-import gr.unipi.weather_app_api.model.WeatherData;
+import gr.unipi.weather_app.model.WeatherData;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import org.springframework.web.reactive.function.client.WebClient;
-import gr.unipi.weather_app_api.repository.WeatherRepository;
+import gr.unipi.weather_app.repository.WeatherRepository;
 
 import java.time.LocalDateTime;
 import java.util.List;
@@ -52,10 +52,6 @@ public class WeatherService {
         } catch (Exception e) {
             throw new RuntimeException("Error fetching weather data", e);
         }
-    }
-
-    public List<WeatherData> getAllWeatherRecords() {
-        return repository.findAll();
     }
 
 }
