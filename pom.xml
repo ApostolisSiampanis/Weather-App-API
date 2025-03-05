@@ -9,10 +9,10 @@
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>gr.unipi</groupId>
-    <artifactId>weather-app-api</artifactId>
+    <artifactId>weather-app</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>Weather App API</name>
-    <description>Weather App API</description>
+    <name>Weather App</name>
+    <description>Weather App</description>
     <url/>
     <licenses>
         <license/>
