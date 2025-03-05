@@ -1,5 +1,5 @@
-CREATE TABLE public.weather_data (
-    id                  BIGINT AUTO_INCREMENT PRIMARY KEY,
+CREATE TABLE weather_data (
+    id                  INTEGER PRIMARY KEY AUTOINCREMENT,
     city                VARCHAR(50) NOT NULL,
     temperature         INT NOT NULL,
     humidity            INT NOT NULL,

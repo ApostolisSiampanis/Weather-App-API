@@ -19,7 +19,7 @@ public class WeatherData {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", unique = true, nullable = false, updatable = false)
-    private Long id;
+    private int id;
 
     @Column(name = "city", nullable = false, length = 50)
     private String city;
