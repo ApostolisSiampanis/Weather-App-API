@@ -50,7 +50,7 @@ public class WeatherData {
         String formatedTimestamp = timestamp.format(formatter);
 
         return "\uD83C\uDF0D Weather Report for " + city + '\n' +
-                "\uD83C\uDF21\uFE0F Temperature: " + temperature + "°C\n" +
+                "🌡️ Temperature: " + temperature + "°C\n" +
                 "💧 Humidity: " + humidity + "%\n" +
                 "💨 Wind Speed: " + windSpeed + " km/h\n" +
                 "☀️ UV Index: " + uvIndex + "\n" +
