@@ -54,4 +54,81 @@ public class WeatherService {
         }
     }
 
+    private String formatAverageWeather(String location, Object[] avgWeather) {
+        if (avgWeather == null || avgWeather.length == 0) {
+            return "No data available for " + location;
+        }
+
+        Object[] nestedAvgWeather = (Object[]) avgWeather[0];
+
+        double avgTemp = nestedAvgWeather[0] != null ? ((Number) nestedAvgWeather[0]).doubleValue() : 0.0;
+        double avgHumidity = nestedAvgWeather[1] != null ? ((Number) nestedAvgWeather[1]).doubleValue() : 0.0;
+        double avgWindSpeed = nestedAvgWeather[2] != null ? ((Number) nestedAvgWeather[2]).doubleValue() : 0.0;
+        double avgUvIndex = nestedAvgWeather[3] != null ? ((Number) nestedAvgWeather[3]).doubleValue() : 0.0;
+
+        if (avgTemp == 0.0 && avgHumidity == 0.0 && avgWindSpeed == 0.0 && avgUvIndex == 0.0) {
+            return "No data available for " + location;
+        }
+
+        return String.format(
+                "%nAverage Weather for %s%nAverage Temperature: %.1f°C%nAverage Humidity: %.1f%%%nAverage Wind Speed: %.1f km/h%nAverage UV Index: %.1f",
+                location, avgTemp, avgHumidity, avgWindSpeed, avgUvIndex
+        );
+    }
+
+    public String getAverageWeatherForCity(String city) {
+        Object[] avgWeather = repository.getAverageWeatherForCity(city);
+        return formatAverageWeather(city, avgWeather);
+    }
+
+    public String getAverageWeatherForLastDays(int days) {
+        LocalDateTime startDate = LocalDateTime.now().minusDays(days);
+        Object[] avgWeather = repository.getAverageWeatherForLastDays(startDate);
+        return formatAverageWeather("the last " + days + " days", avgWeather);
+    }
+
+    public String findHottestCity() {
+        Object[] hottestCity = repository.findHottestCity();
+        Object[] nestedHottestCity = (Object[]) hottestCity[0];
+
+        if (nestedHottestCity[0] == null) {
+            return "No data available for the hottest city";
+        }
+
+        return String.format(
+                "%n🔥 Hottest City Recorded: %s%nHottest Temperature: %d°C",
+                nestedHottestCity[0], ((Number) nestedHottestCity[1]).intValue()
+        );
+    }
+
+    public String findColdestCity() {
+        Object[] coldestCity = repository.findColdestCity();
+        Object[] nestedColdestCity = (Object[]) coldestCity[0];
+
+        if (nestedColdestCity[0] == null) {
+            return "No data available for the coldest city";
+        }
+
+        return String.format(
+                "%n❄️ Coldest City Recorded: %s%nColdest Temperature: %d°C",
+                nestedColdestCity[0], ((Number) nestedColdestCity[1]).intValue()
+        );
+    }
+
+    public String getMostSearchedCities() {
+        List<Object[]> cities = repository.findMostSearchedCities();
+        if (cities == null || cities.isEmpty()) {
+            return "No data available for the most searched cities";
+        }
+        StringBuilder result = new StringBuilder();
+        for (Object[] c : cities) {
+            result.append(String.format(
+                    "%n🔍 City: %s%n🔢 Searches: %d",
+                    c[0], ((Number) c[1]).intValue()
+            ));
+        }
+
+        return result.toString();
+    }
+
 }
