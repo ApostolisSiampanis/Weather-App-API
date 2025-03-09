@@ -9,6 +9,13 @@ import lombok.Setter;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
+/**
+ * Represents weather data for a specific city, including temperature, humidity,
+ * wind speed, UV index, weather description, and a timestamp.
+ *
+ * This class is mapped to the "weather_data" table in the "public" schema using JPA annotations.
+ * Lombok is used to reduce boilerplate code for getters, setters, and constructors.
+ */
 @Entity
 @Table(name = "weather_data", schema = "public")
 @Getter
@@ -17,32 +24,70 @@ import java.time.format.DateTimeFormatter;
 @AllArgsConstructor
 public class WeatherData {
 
+    /**
+     * The unique identifier for the weather data record.
+     * It is auto-generated and cannot be modified after creation.
+     */
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", unique = true, nullable = false, updatable = false)
     private int id;
 
+    /**
+     * The name of the city for which the weather data is recorded.
+     * It cannot be null and has a maximum length of 50 characters.
+     */
     @Column(name = "city", nullable = false, length = 50)
     private String city;
 
+    /**
+     * The temperature in degrees Celsius.
+     * It cannot be null.
+     */
     @Column(name = "temperature", nullable = false)
     private int temperature;
 
+    /**
+     * The humidity percentage.
+     * It cannot be null.
+     */
     @Column(name = "humidity", nullable = false)
     private int humidity;
 
+    /**
+     * The wind speed in kilometers per hour.
+     * It cannot be null.
+     */
     @Column(name = "wind_speed", nullable = false)
     private int windSpeed;
 
+    /**
+     * The UV index, representing the intensity of ultraviolet radiation.
+     * It cannot be null.
+     */
     @Column(name = "uv_index", nullable = false)
     private int uvIndex;
 
+    /**
+     * A brief textual description of the weather conditions.
+     * It cannot be null.
+     */
     @Column(name = "weather_description", nullable = false)
     private String weather_description;
 
+    /**
+     * The timestamp when the weather data was recorded.
+     * It cannot be null.
+     */
     @Column(name = "timestamp", nullable = false)
     private LocalDateTime timestamp;
 
+    /**
+     * Returns a formatted string representation of the weather data.
+     *
+     * @return A human-readable weather report including temperature, humidity,
+     *         wind speed, UV index, weather description, and timestamp.
+     */
     @Override
     public String toString() {
 
