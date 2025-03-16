@@ -1,0 +1,5 @@
+gr.unipi.weather_app
+gr.unipi.weather_app.configuration
+gr.unipi.weather_app.model
+gr.unipi.weather_app.repository
+gr.unipi.weather_app.service

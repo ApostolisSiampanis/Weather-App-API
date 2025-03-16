@@ -1,0 +1,1 @@
+packageSearchIndex = [{"l":"All Packages","u":"allpackages-index.html"},{"l":"gr.unipi.weather_app"},{"l":"gr.unipi.weather_app.configuration"},{"l":"gr.unipi.weather_app.model"},{"l":"gr.unipi.weather_app.repository"},{"l":"gr.unipi.weather_app.service"}];updateSearchResults();
