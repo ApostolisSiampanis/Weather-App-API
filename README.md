@@ -34,7 +34,7 @@ The application interacts with the wttr.in API, which provides weather data in J
 ## Javadocs
 The Javadocs for this project are hosted on GitHub Pages. You can access them directly from the following link:
 
-[Weather App api](https://apostolissiampanis.github.io/Weather-App-API/)
+[Weather App api Javadocs](https://apostolissiampanis.github.io/Weather-App-API/)
 
 The documentation includes detailed descriptions for all classes, methods, and fields.
 
